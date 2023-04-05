@@ -95,6 +95,7 @@ slug:
 <td>
 
 <https://spec.commonmark.org/0.30/#link-destination>
+<https://spec.commonmark.org/0.30/#autolink>
 
 </td>
 </tr>
@@ -196,7 +197,102 @@ slug:
 
 ### img
 
-![ID](URL)
+<table>
+<tr><th colspan="2">Type</th><th>Markdown</th><th>表示結果</th></tr>
+<tr><th colspan="2">inline</th>
+<td>
+
+```markdown a-i-format.md
+![alt属性値](URL)
+```
+---
+```markdown a-i-example.md
+![some-image](asset/image/pexels-timo-volz-3643714_1071x1606-min.jpg)
+```
+
+</td>
+<td>
+
+![some-image](asset/image/pexels-timo-volz-3643714_1071x1606-min.jpg)
+
+</td>
+</tr>
+
+<tr><th rowspan="3">reference</th><th>full</th>
+<td>
+
+```markdown a-f-format.md
+![alt属性値][ID]
+
+[ID]:URL
+```
+---
+```markdown a-f-example.md
+![alt属性値][some-image-0]
+
+[some-image-0]:asset/image/pexels-timo-volz-3643714_1071x1606-min.jpg
+```
+
+</td>
+<td>
+
+![alt属性値][some-image-0]
+
+[some-image-0]:asset/image/pexels-timo-volz-3643714_1071x1606-min.jpg
+
+</td>
+</tr>
+
+<tr><th>collapsed</th>
+<td>
+
+```markdown a-c-format.md
+![ID][]
+
+[ID]:URL
+```
+---
+```markdown a-c-example.md
+![some-image-1][]
+
+[some-image-1]:asset/image/pexels-timo-volz-3643714_1071x1606-min.jpg
+```
+
+</td>
+<td>
+
+![some-image-1][]
+
+[some-image-1]:asset/image/pexels-timo-volz-3643714_1071x1606-min.jpg
+
+</td>
+</tr>
+
+<tr><th>shortcut</th>
+<td>
+
+```markdown a-s-format.md
+![ID]
+
+[ID]:URL
+```
+---
+```markdown a-s-example.md
+![some-image-2]
+
+[some-image-2]:asset/image/pexels-timo-volz-3643714_1071x1606-min.jpg
+```
+
+</td>
+<td>
+
+![some-image-2]
+
+[some-image-2]:asset/image/pexels-timo-volz-3643714_1071x1606-min.jpg
+
+</td>
+</tr>
+</table>
 
 ### text
 
