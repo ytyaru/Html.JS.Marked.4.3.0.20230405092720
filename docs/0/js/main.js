@@ -15,6 +15,7 @@ window.addEventListener('DOMContentLoaded', async(event) => {
             return hljs.highlight(code, { language }).value;
         }
     })
+//    marked.use({extensions: [getRubyExtension()]})
     const res = await fetch(`md/test.md`)
     const html = await marked.parse(await res.text())
     document.getElementById('content').innerHTML = html
