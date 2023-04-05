@@ -1,20 +1,30 @@
 function getRubyExtension() {
 const rubyShort = new RegExp(/([一-龠々仝〆〇ヶ]{1,50})《([^|｜《》\n\r]{1,20})》/, '') // 漢字《かんじ》
 const rubyLong = new RegExp(/[｜]([^一-龠々仝〆〇ヶ|｜《》\n\r]{1,50})《([^|｜《》\n\r]{1,20})》/, '') // ｜ABC《えーびーしー》
+//const rubyShort = new RegExp(/([^｜]*)([一-龠々仝〆〇ヶ]{1,50})《([^|｜《》\n\r]{1,20})》(.*)/, '') // 漢字《かんじ》
+//const rubyLong = new RegExp(/([^｜]*)[｜]([^一-龠々仝〆〇ヶ|｜《》\n\r]{1,50})《([^|｜《》\n\r]{1,20})》(.*)/, '') // ｜ABC《えーびーしー》
 return {
   name: 'ruby',
   level: 'inline',
-  start(src) { return src.match(/｜/)?.index; },    // Hint to Marked.js to stop and check for a match
+  //start(src) { return src.match(/｜/)?.index; },    // Hint to Marked.js to stop and check for a match
+  start(src) { return Math.min(src.match(rubyShort)?.index, src.match(rubyLong)?.index); },
   tokenizer(src, tokens) {
     console.log('tokenizer')
     for (let regex of [rubyLong, rubyShort]) {
       let match = regex.exec(src);
       if (match) {
-        const token = {                                 // Token to generate
-          type: 'ruby',                                 // Should match "name" above
-          raw: match[0],                                // Text to consume from the source
-          text: match[0].trim(),                        // Additional custom properties
-          tokens: [match[1], match[2]]                  // Array where child inline tokens will be generated
+        console.log(src, match, regex)
+        //regex.test(src)
+        return {          // Token to generate
+          type: 'ruby',   // Should match "name" above
+          //raw: src,  // Text to consume from the source
+          raw: match[0],  // Text to consume from the source
+          rb: match[1],
+          rt: match[2],
+          //prefix: src.split(regex.index),
+          //suffix: src.split(regex.lastIndex)
+//          prefix: match.input.slice(index),
+//          suffix: ''
         };
 //        this.lexer.inline(token.text, token.tokens);    // Queue this data to be processed for inline tokens
 //        return token;
@@ -23,7 +33,7 @@ return {
   },
   renderer(token) {
     //return `<dl>${this.parser.parseInline(token.tokens)}\n</dl>`; // parseInline to turn child tokens into HTML
-    return `<ruby>${token.tokens[0]}<rp>（</rp><rt>${token.tokens[1]}</rt><rp>）</rp>`
+    return `<ruby>${token.rb}<rp>（</rp><rt>${token.rt}</rt><rp>）</rp>`
   }
 }
 }
