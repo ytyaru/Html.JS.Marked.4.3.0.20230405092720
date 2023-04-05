@@ -1,0 +1,44 @@
+@charset "utf-8";
+/*
+* {
+    padding: 0;
+    margin: 0;
+}
+img.icon {
+    width: 1em;
+    height: 1em;
+}
+*/
+body {
+    --line-of-chars:45;
+    font-size: max(16px, calc(100vw / (var(--line-of-chars))));
+}
+pre { padding:0; margin:0; }
+pre code { font-size: max(16px, calc(100vw / ((var(--line-of-chars) * 2)))); line-height:1em; }
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-bottom: 1em;
+}
+th, td {
+    border: 1px solid black;
+    padding: 0.20em;
+}
+th { background: #CCEECC; }
+em {
+    font-style: normal; /* 非イタリック化 */
+    text-emphasis-style: filled dot; 
+    text-emphasis-color: inherit;
+    -webkit-text-emphasis: filled dot black;
+}
+em.dot { text-emphasis-style: dot; -webkit-text-emphasis: filled dot black; }
+em.circle { text-emphasis-style: circle; -webkit-text-emphasis: filled circle black; }
+em.double-circle { text-emphasis-style: double-circle; -webkit-text-emphasis: filled double-circle black; }
+em.triangle { text-emphasis-style: triangle; -webkit-text-emphasis: filled triangle black; }
+em.sesame { text-emphasis-style: sesame; -webkit-text-emphasis: filled sesame black; }
+em.char { text-emphasis-style: '🌙'; -webkit-text-emphasis-style:  '🌙'; }
+em.open-dot { text-emphasis-style: open dot; -webkit-text-emphasis: open dot black; }
+em.open-circle { text-emphasis-style: circle; -webkit-text-emphasis: open circle black; }
+em.open-double-circle { text-emphasis-style: double-circle; -webkit-text-emphasis: open double-circle black; }
+em.open-triangle { text-emphasis-style: triangle; -webkit-text-emphasis: open triangle black; }
+em.open-sesame { text-emphasis-style: sesame; -webkit-text-emphasis: open sesame black; }
