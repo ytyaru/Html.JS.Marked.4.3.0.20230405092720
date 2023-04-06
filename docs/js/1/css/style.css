@@ -1,0 +1,76 @@
+@charset "utf-8";
+/*
+* {
+    padding: 0;
+    margin: 0;
+}
+*/
+body {
+    --line-of-chars:45;
+    font-size: max(16px, calc(100vw / (var(--line-of-chars))));
+}
+img.icon { width: 1em; height: 1em; }
+pre { padding:0; margin:0; }
+pre code { font-size: max(16px, calc(100vw / ((var(--line-of-chars) * 2)))); line-height:1em; }
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-bottom: 1em;
+}
+th, td {
+    border: 1px solid black;
+    padding: 0.20em;
+}
+th { background: #CCEECC; }
+em {
+    font-style: normal; /* 非イタリック化 */
+    text-emphasis-style: filled dot; 
+    text-emphasis-color: inherit;
+    -webkit-text-emphasis: filled dot black;
+}
+em.dot { text-emphasis-style: dot; -webkit-text-emphasis: filled dot black; }
+em.circle { text-emphasis-style: circle; -webkit-text-emphasis: filled circle black; }
+em.double-circle { text-emphasis-style: double-circle; -webkit-text-emphasis: filled double-circle black; }
+em.triangle { text-emphasis-style: triangle; -webkit-text-emphasis: filled triangle black; }
+em.sesame { text-emphasis-style: sesame; -webkit-text-emphasis: filled sesame black; }
+em.char { text-emphasis-style: '🌙'; -webkit-text-emphasis-style:  '🌙'; }
+em.open-dot { text-emphasis-style: open dot; -webkit-text-emphasis: open dot black; }
+em.open-circle { text-emphasis-style: circle; -webkit-text-emphasis: open circle black; }
+em.open-double-circle { text-emphasis-style: double-circle; -webkit-text-emphasis: open double-circle black; }
+em.open-triangle { text-emphasis-style: triangle; -webkit-text-emphasis: open triangle black; }
+em.open-sesame { text-emphasis-style: sesame; -webkit-text-emphasis: open sesame black; }
+
+blockquote{
+    /*position:relative;*/
+    border-left:0.1em solid #DA8596;
+    /*padding-left:10px;*/
+    background:#F9eada;
+    border-radius:0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0;
+}
+    /*font-family: 'Font Awesome 6 Free';*/
+    /*Font Awesome 6 Free-Solid-900.otf*/
+    /*content:'\f10d';*/
+/*
+blockquote:before{
+    content: '❝'
+    text-align:left;
+}blockquote:after{
+    content: '❞'
+    text-align:right;
+}
+*/
+/*blockquote p, h1,h2,h3,h4,h5,h6 { padding:0; margin:0; }*/
+blockquote :is(h1,h2,h3,h4,h5,h6) { padding:0; margin:0; }
+blockquote p { margin-bottom:0; padding-bottom:0; }
+blockquote cite{
+    display: block;
+    /*font-size:0.8rem;*/
+    /*color:#F8C8B2;*/
+    border-top:1px solid #808080;
+    text-align:right;
+}
